@@ -1,0 +1,19 @@
+{
+    "name": "bruno/gestor-finance",
+    "description": "Gerenciamento de finanças pessoais",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno Neves",
+            "email": "brunu.neves@gmail.com"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "0.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GestorFin\\": "src/"
+        }
+    }
+}
