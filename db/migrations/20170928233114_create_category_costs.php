@@ -9,14 +9,13 @@ class CreateCategoryCosts extends AbstractMigration
     {
         $this->table('category_costs')
             ->addColumn('name', 'string')
-            ->addColumn('created_at','datetime')
+            ->addColumn('created_at', 'datetime')
             ->addColumn('updated_at', 'datetime')
             ->save();
-
     }
 
     public function down()
     {
-        $this->dropDatabase('category_costs');
+        $this->dropTable('category_costs');
     }
 }
