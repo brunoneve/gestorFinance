@@ -1,1 +1,1 @@
-# gestorFinance - Free manager finance
+# gestorFinance - Personal Finance Manager
