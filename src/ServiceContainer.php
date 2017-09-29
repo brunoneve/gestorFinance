@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types = 1);
 namespace GestorFin;
 
 use Xtreamwayz\Pimple\Container;
@@ -23,7 +23,7 @@ class ServiceContainer implements ServiceContainerInterface
      * @param string $name
      * @param $service
      */
-    public function add(string $name, $service)
+    public function add(string $name, $service):void
     {
         $this->container[$name] = $service;
     }
@@ -32,7 +32,7 @@ class ServiceContainer implements ServiceContainerInterface
      * @param string $name
      * @param callable $callable
      */
-    public function addLazy(string $name, callable $callable)
+    public function addLazy(string $name, callable $callable):void
     {
         $this->container[$name] = $this->container->factory($callable);
     }

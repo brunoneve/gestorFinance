@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types = 1);
 namespace GestorFin;
 
 
@@ -32,12 +32,17 @@ class Application
      * @param string $name
      * @param $service
      */
-    public function addService(string $name, $service)
+    public function addService(string $name, $service):void
     {
         if (is_callable($service)) {
             $this->serviceContainer->addLaze($name, $service);
         } else {
             $this->serviceContainer->add($name, $service);
         }
+    }
+
+    public function plugin(PluginInterface $plugin):void
+    {
+        $plugin->register($this->serviceContainer);
     }
 }
