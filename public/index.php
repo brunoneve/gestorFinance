@@ -17,12 +17,10 @@ $app->get('/', function(){
 });
 
 $app->get('/home/{name}/{id}', function(ServerRequestInterface $request){
-    echo "Mostrando a home!!";
-    echo "<br>";
-    echo $request->getAttribute("name");
-    echo "<br>";
-    echo $request->getAttribute("id");
-    echo "<br>";
+
+    $response = new \Zend\Diactoros\Response();
+    $response->getBody()->write('Teste response SapiEmitter');
+    return $response;
 });
 
 
