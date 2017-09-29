@@ -4,6 +4,7 @@ namespace GestorFin;
 
 
 use GestorFin\Plugins\PluginInterface;
+use Psr\Http\Message\RequestInterface;
 
 class Application
 {
@@ -67,8 +68,18 @@ class Application
     public function start()
     {
         $route = $this->service('route');
+        /** @var ServerRequestInterface $request */
+        $request = $this->service(RequestInterface::class);
+
+        if (!$route) {
+           die('Page not found!');
+        }
+
+        foreach ($route->attributes as $key => $value) {
+            $request = $request->withAttribute($key,$value);
+        }
 
         $callable = $route->handler;
-        $callable();
+        $callable($request);
     }
 }
