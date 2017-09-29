@@ -3,6 +3,8 @@ declare(strict_types = 1);
 namespace GestorFin;
 
 
+use GestorFin\Plugins\PluginInterface;
+
 class Application
 {
     /**
@@ -35,14 +37,38 @@ class Application
     public function addService(string $name, $service):void
     {
         if (is_callable($service)) {
-            $this->serviceContainer->addLaze($name, $service);
+            $this->serviceContainer->addLazy($name, $service);
         } else {
             $this->serviceContainer->add($name, $service);
         }
     }
 
+    /**
+     * @param PluginInterface $plugin
+     */
     public function plugin(PluginInterface $plugin):void
     {
         $plugin->register($this->serviceContainer);
+    }
+
+    /**
+     * @param $path
+     * @param $action
+     * @param null $name
+     * @return Application
+     */
+    public function get($path, $action, $name = null):Application
+    {
+        $routing = $this->service('routing');
+        $routing->get($name, $path, $action);
+        return $this;
+    }
+
+    public function start()
+    {
+        $route = $this->service('route');
+
+        $callable = $route->handler;
+        $callable();
     }
 }

@@ -14,7 +14,7 @@ interface ServiceContainerInterface
      * @param string $name
      * @param callable $callable
      */
-    public function addLaze(string $name, callable $callable);
+    public function addLazy(string $name, callable $callable);
 
     /**
      * @param string $name
