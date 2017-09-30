@@ -1,6 +1,7 @@
 <?php
 
 use GestorFin\Application;
+use GestorFin\Models\CategoryCost;
 use GestorFin\Plugins\RoutePlugin;
 use GestorFin\Plugins\ViewPlugin;
 use GestorFin\ServiceContainer;
@@ -18,8 +19,12 @@ $app->plugin(new DbPlugin());
 
 
 $app->get('/categoryCosts', function() use ($app) {
+    $meuModel = new CategoryCost();
+    $categories = $meuModel->all();
     $view = $app->service('view.renderer');
-    return $view->render('category-costs/list.html.twig');
+    return $view->render('category-costs/list.html.twig',[
+        'categories' => $categories
+    ]);
 });
 
 $app->get('/{name}', function(ServerRequestInterface $request) use($app){
