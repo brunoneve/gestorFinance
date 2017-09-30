@@ -1,4 +1,5 @@
 .idea/
+bower_components/
 .env
 .env-example
 vendor

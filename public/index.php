@@ -14,9 +14,12 @@ $app = new Application($serviceContainer);
 $app->plugin(new RoutePlugin());
 $app->plugin(new ViewPlugin());
 
-$app->get('/', function(){
-    echo 'First route';
+
+$app->get('/categoryCosts', function() use ($app) {
+    $view = $app->service('view.renderer');
+    return $view->render('category-costs/list.html.twig');
 });
+
 
 $app->get('/{name}', function(ServerRequestInterface $request) use($app){
     $view = $app->service('view.renderer');
