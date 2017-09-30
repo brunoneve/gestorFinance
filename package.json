@@ -1,0 +1,24 @@
+{
+  "name": "gestorfinance",
+  "version": "1.0.0",
+  "description": "Gestor Finance",
+  "main": "index.js",
+  "dependencies": {
+    "gentelella": "^1.3.0",
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoneve/gestorFinance.git"
+  },
+  "author": "Bruno Neves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunoneve/gestorFinance/issues"
+  },
+  "homepage": "https://github.com/brunoneve/gestorFinance#readme"
+}
